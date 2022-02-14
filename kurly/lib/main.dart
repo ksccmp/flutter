@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:kurly/screen/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,22 +9,28 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent
+      )
+    );
+
     return MaterialApp(
       title: 'Kurly Clone App',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        brightness: Brightness.light,
       ),
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
+          backgroundColor: const Color(0xff5f0081),
           body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               Center(
-                child: Text('Home'),
+                child: Home(),
               ),
               Center(
                 child: Text('Category'),
